@@ -1,6 +1,7 @@
 package br.com.desafiosBecaLucasLinhares.model;
 
-public interface AcoesMusica {
+public abstract interface AcoesMusica {
 
-    public abstract void mudarVolume();
+     void mudarVolume();
+
 }
