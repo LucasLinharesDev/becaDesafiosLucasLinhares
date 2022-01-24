@@ -1,29 +1,41 @@
 package br.com.desafiosBecaLucasLinhares.model;
 
+
 public class Musica implements AcoesMusica{
 
     private Long id;
     private String nome;
     private int volume;
     private String artistaNome;
-    private Long quantidadeDownloads;
+    private Long quantidadeDownloads=1L;
     private Long quantidadeCurtidas;
 
+    public Musica() {
 
+    }
 
     public Musica(String nome, int volume, String artistaNome,
                   Long quantidadeDownloads, Long quantidadeCurtidas) {
 
-        setNome(nome);
-        setVolume(volume);
-        setArtistaNome(artistaNome);
-        setQuantidadeDownloads(getQuantidadeDownloads()+quantidadeDownloads);
-        setQuantidadeCurtidas(getQuantidadeCurtidas()+quantidadeCurtidas);
+        this.nome = nome;
+        this.volume = volume;
+        this.artistaNome = artistaNome;
+        this.quantidadeDownloads = quantidadeDownloads;
+        this.quantidadeCurtidas = quantidadeCurtidas;
 
     }
 
-
     // Métodos Acessores e Auxiliares
+
+    public Long getId() {
+
+        return id;
+
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
 
@@ -89,6 +101,28 @@ public class Musica implements AcoesMusica{
 
     @Override
     public void mudarVolume() {
+
+    }
+
+    //toString
+
+    @Override
+    public String toString() {
+
+        return "Musica{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", volume=" + volume +
+                ", artistaNome='" + artistaNome + '\'' +
+                ", quantidadeDownloads=" + quantidadeDownloads +
+                ", quantidadeCurtidas=" + quantidadeCurtidas +
+                '}';
+
+    }
+
+    public void adicionarEmQuantidadeDownloads() {
+
+        setQuantidadeDownloads(getQuantidadeDownloads()+1L);
 
     }
 }

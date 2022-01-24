@@ -9,6 +9,10 @@ public class Reproduzir {
     private Musica musica;
     private Date data;
 
+    public Reproduzir(){
+
+    }
+
     public Reproduzir(Ouvinte ouvinte, Musica musica, Date data) {
 
         setOuvinte(ouvinte);
@@ -18,6 +22,18 @@ public class Reproduzir {
     }
 
     // Métodos Acessores e Auxiliares
+
+    public Long getId() {
+
+        return id;
+
+    }
+
+    public void setId(Long id) {
+
+        this.id = id;
+
+    }
 
     public Ouvinte getOuvinte() {
 
@@ -54,4 +70,6 @@ public class Reproduzir {
         this.data = data;
 
     }
+
+
 }

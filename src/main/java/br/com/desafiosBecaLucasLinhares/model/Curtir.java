@@ -22,6 +22,18 @@ public class Curtir {
 
     // Métodos auxiliares e Acessores
 
+    public Long getId() {
+
+        return id;
+
+    }
+
+    public void setId(Long id) {
+
+        this.id = id;
+
+    }
+
     public Musica getMusica() {
 
         return musica;

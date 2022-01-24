@@ -9,6 +9,10 @@ public class Download {
     private Ouvinte ouvinte;
     private Date data;
 
+    public Download(){
+
+    }
+
     public Download(Musica musica, Ouvinte ouvinte, Date data) {
 
         setMusica(musica);
@@ -18,6 +22,18 @@ public class Download {
     }
 
     // Métodos auxiliares e Acessores
+
+    public Long getId() {
+
+        return id;
+
+    }
+
+    public void setId(Long id) {
+
+        this.id = id;
+
+    }
 
     public Musica getMusica() {
 

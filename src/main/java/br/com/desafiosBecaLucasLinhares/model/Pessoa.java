@@ -6,6 +6,10 @@ public abstract class Pessoa {
     private int idade;
     private String sexo;
 
+    public Pessoa(){
+
+    }
+
     public Pessoa(String nome, int idade, String sexo) {
 
         this.nome = nome;
