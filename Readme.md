@@ -32,7 +32,7 @@ ___________________________
 ##### DELETE (Deletar passando id no url):
 * api/musica/deletar/3
 
-#####PATCH (Atualizar passando id no url, e objeto no body em JSON):
+##### PATCH (Atualizar passando id no url, e objeto no body em JSON):
 * api/musica/atualizar/5
 
 -----------------------------------------------------------------------------------
