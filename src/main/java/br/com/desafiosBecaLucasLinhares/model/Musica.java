@@ -7,8 +7,8 @@ public class Musica implements AcoesMusica{
     private String nome;
     private int volume;
     private String artistaNome;
-    private Long quantidadeDownloads=1L;
-    private Long quantidadeCurtidas;
+    private Long quantidadeDownloads=0L;
+    private Long quantidadeCurtidas=0L;
 
     public Musica() {
 

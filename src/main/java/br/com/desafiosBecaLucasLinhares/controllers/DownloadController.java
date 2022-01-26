@@ -1,39 +1,66 @@
 package br.com.desafiosBecaLucasLinhares.controllers;
 
+import br.com.desafiosBecaLucasLinhares.Services.DownloadService;
 import br.com.desafiosBecaLucasLinhares.model.Download;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("download")
 public class DownloadController {
 
+
+    DownloadService downloadService;
+
+    @Autowired
+    public DownloadController(DownloadService downloadService) {
+
+        this.downloadService = downloadService;
+
+    }
+
     @PostMapping("iniciar")
     public ResponseEntity<Download> iniciarDownload(@RequestBody Download download){
 
-        download.getMusica().adicionarEmQuantidadeDownloads();
+        Download downloadIniciado = downloadService.iniciarDownload(download);
 
-        download.getOuvinte().adicionarEmListaDownloads(download.getMusica());
-
-        return ResponseEntity.created(null).body(download);
+        return ResponseEntity.created(null).body(downloadIniciado);
     }
 
     @GetMapping("obter/{id}")
     public ResponseEntity<Download> obterDownload(@PathVariable Long id){
 
-        return ResponseEntity.noContent().build();
+        Download downloadObtidoPorId = downloadService.obterDownload(id);
+
+        return ResponseEntity.ok().body(downloadObtidoPorId);
+    }
+
+    @GetMapping("obter/lista")
+    public ResponseEntity<List<Download>> listaDeDownloads(){
+
+        List<Download> listaObtida = downloadService.listaDeDownloads();
+
+        return ResponseEntity.ok().body(listaObtida);
+
     }
 
     @PatchMapping("atualizar/{id}")
     public ResponseEntity<Download> atualizarDownload(@PathVariable Long id){
 
-        return ResponseEntity.ok().build();
+        Download downloadAtualizado = downloadService.atualizarDownload(id);
+
+        return ResponseEntity.ok().body(downloadAtualizado);
+
     }
 
     @DeleteMapping("delete/{id}")
     public ResponseEntity<Download> deletarDownload(@PathVariable Long id){
 
-        return ResponseEntity.ok().build();
+        Download downloadDeletado = downloadService.deletarDownload(id);
+        return ResponseEntity.ok().body(downloadDeletado);
 
     }
 
