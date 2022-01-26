@@ -1,9 +1,7 @@
 package br.com.desafiosBecaLucasLinhares.Services;
 
-import br.com.desafiosBecaLucasLinhares.model.Download;
-import org.springframework.http.ResponseEntity;
+import br.com.desafiosBecaLucasLinhares.Models.Download;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;

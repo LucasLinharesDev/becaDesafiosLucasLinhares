@@ -1,4 +1,4 @@
-package br.com.desafiosBecaLucasLinhares.model;
+package br.com.desafiosBecaLucasLinhares.Models;
 
 import java.util.Date;
 

@@ -1,7 +1,7 @@
-package br.com.desafiosBecaLucasLinhares.controllers;
+package br.com.desafiosBecaLucasLinhares.Controllers;
 
 import br.com.desafiosBecaLucasLinhares.Services.MusicaService;
-import br.com.desafiosBecaLucasLinhares.model.Musica;
+import br.com.desafiosBecaLucasLinhares.Models.Musica;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +12,8 @@ import java.util.List;
 @RequestMapping("musica/")
 public class MusicaController {
 
-    private MusicaService musicaService;
-
     @Autowired
-    public MusicaController(MusicaService musicaService) {
-        this.musicaService = musicaService;
-    }
+    private MusicaService musicaService;
 
     @PostMapping("criar")
     public ResponseEntity<Musica> criar(@RequestBody Musica musica){

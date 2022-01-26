@@ -1,7 +1,7 @@
-package br.com.desafiosBecaLucasLinhares.controllers;
+package br.com.desafiosBecaLucasLinhares.Controllers;
 
 import br.com.desafiosBecaLucasLinhares.Services.ReproduzirService;
-import br.com.desafiosBecaLucasLinhares.model.Reproduzir;
+import br.com.desafiosBecaLucasLinhares.Models.Reproduzir;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +12,8 @@ import java.util.List;
 @RequestMapping("reproduzir")
 public class ReproduzirController {
 
-    ReproduzirService reproduzirService;
-
     @Autowired
-    public ReproduzirController(ReproduzirService reproduzirService) {
-        this.reproduzirService = reproduzirService;
-    }
+    ReproduzirService reproduzirService;
 
     @PostMapping("iniciar")
     public ResponseEntity<Reproduzir> iniciarReproducao(@RequestBody Reproduzir reproducao){

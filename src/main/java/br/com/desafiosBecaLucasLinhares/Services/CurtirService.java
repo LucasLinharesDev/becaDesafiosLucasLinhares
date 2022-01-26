@@ -1,6 +1,6 @@
 package br.com.desafiosBecaLucasLinhares.Services;
 
-import br.com.desafiosBecaLucasLinhares.model.Curtir;
+import br.com.desafiosBecaLucasLinhares.Models.Curtir;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

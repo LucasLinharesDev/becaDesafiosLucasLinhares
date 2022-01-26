@@ -1,18 +1,19 @@
-package br.com.desafiosBecaLucasLinhares.model;
+package br.com.desafiosBecaLucasLinhares.Models;
+
 import java.util.Date;
 
-public class Curtir {
+public class Download {
 
     private Long id;
-    public Musica musica;
-    public Ouvinte ouvinte;
+    private Musica musica;
+    private Ouvinte ouvinte;
     private Date data;
 
-    public Curtir() {
+    public Download(){
 
     }
 
-    public Curtir(Musica musica,Ouvinte ouvinte, Date data) {
+    public Download(Musica musica, Ouvinte ouvinte, Date data) {
 
         setMusica(musica);
         setOuvinte(ouvinte);

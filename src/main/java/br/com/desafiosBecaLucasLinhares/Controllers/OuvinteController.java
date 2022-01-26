@@ -1,7 +1,7 @@
-package br.com.desafiosBecaLucasLinhares.controllers;
+package br.com.desafiosBecaLucasLinhares.Controllers;
 
 import br.com.desafiosBecaLucasLinhares.Services.OuvinteService;
-import br.com.desafiosBecaLucasLinhares.model.Ouvinte;
+import br.com.desafiosBecaLucasLinhares.Models.Ouvinte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +11,8 @@ import java.util.List;
 @RequestMapping("ouvinte")
 public class OuvinteController {
 
-    OuvinteService ouvinteService;
-
     @Autowired
-    public OuvinteController(OuvinteService ouvinteService) {
-        this.ouvinteService = ouvinteService;
-    }
+    OuvinteService ouvinteService;
 
     @PostMapping("criar")
     public ResponseEntity<Ouvinte> criar(@RequestBody Ouvinte ouvinte){

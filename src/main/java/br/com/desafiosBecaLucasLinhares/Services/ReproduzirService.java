@@ -1,9 +1,7 @@
 package br.com.desafiosBecaLucasLinhares.Services;
 
-import br.com.desafiosBecaLucasLinhares.model.Reproduzir;
-import org.springframework.http.ResponseEntity;
+import br.com.desafiosBecaLucasLinhares.Models.Reproduzir;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;

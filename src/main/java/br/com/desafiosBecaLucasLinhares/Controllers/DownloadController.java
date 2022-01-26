@@ -1,7 +1,7 @@
-package br.com.desafiosBecaLucasLinhares.controllers;
+package br.com.desafiosBecaLucasLinhares.Controllers;
 
 import br.com.desafiosBecaLucasLinhares.Services.DownloadService;
-import br.com.desafiosBecaLucasLinhares.model.Download;
+import br.com.desafiosBecaLucasLinhares.Models.Download;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,15 +12,9 @@ import java.util.List;
 @RequestMapping("download")
 public class DownloadController {
 
-
+    @Autowired
     DownloadService downloadService;
 
-    @Autowired
-    public DownloadController(DownloadService downloadService) {
-
-        this.downloadService = downloadService;
-
-    }
 
     @PostMapping("iniciar")
     public ResponseEntity<Download> iniciarDownload(@RequestBody Download download){

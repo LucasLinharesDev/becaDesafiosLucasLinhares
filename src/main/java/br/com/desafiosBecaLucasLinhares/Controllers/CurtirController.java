@@ -1,7 +1,7 @@
-package br.com.desafiosBecaLucasLinhares.controllers;
+package br.com.desafiosBecaLucasLinhares.Controllers;
 
 import br.com.desafiosBecaLucasLinhares.Services.CurtirService;
-import br.com.desafiosBecaLucasLinhares.model.Curtir;
+import br.com.desafiosBecaLucasLinhares.Models.Curtir;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +12,8 @@ import java.util.List;
 @RequestMapping("curtidas")
 public class CurtirController {
 
-    CurtirService curtirService;
-
     @Autowired
-    public CurtirController(CurtirService curtirService) {
-        this.curtirService = curtirService;
-    }
+    CurtirService curtirService;
 
     @PostMapping( "adicionar" )
     public ResponseEntity<Curtir> curtir( @RequestBody Curtir curtida){

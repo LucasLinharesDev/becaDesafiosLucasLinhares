@@ -1,6 +1,6 @@
 package br.com.desafiosBecaLucasLinhares.Services;
 
-import br.com.desafiosBecaLucasLinhares.model.Musica;
+import br.com.desafiosBecaLucasLinhares.Models.Musica;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
