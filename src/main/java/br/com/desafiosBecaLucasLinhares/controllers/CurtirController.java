@@ -1,7 +1,7 @@
-package br.com.desafiosBecaLucasLinhares.Controllers;
+package br.com.desafiosBecaLucasLinhares.controllers;
 
-import br.com.desafiosBecaLucasLinhares.Services.CurtirService;
-import br.com.desafiosBecaLucasLinhares.Models.Curtir;
+import br.com.desafiosBecaLucasLinhares.services.CurtirService;
+import br.com.desafiosBecaLucasLinhares.models.Curtir;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +27,7 @@ public class CurtirController {
     public ResponseEntity<Curtir> obterPorId(@PathVariable Long id){
 
         Curtir curtidaObtidaPorId = curtirService.obterPorId(id);
+
         return ResponseEntity.ok().body(curtidaObtidaPorId);
     }
 
@@ -39,17 +40,19 @@ public class CurtirController {
 
     }
 
+    @DeleteMapping("deletar/{id}")
+    public ResponseEntity<Curtir> deletar(@PathVariable Long id){
+
+        curtirService.deletar(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
     @PatchMapping("atualizar/{id}")
     public ResponseEntity<Curtir> atualizarPorId(@PathVariable Long id, @RequestBody Curtir curtida){
 
         Curtir curtidaAtualizada = curtirService.atualizarPorId(id, curtida);
 
         return ResponseEntity.ok().body(curtidaAtualizada);
-    }
-
-    @DeleteMapping("deletar/{id}")
-    public ResponseEntity<Curtir> deletar(@PathVariable Long id){
-
-        return ResponseEntity.ok().body(curtirService.deletar(id));
     }
 }

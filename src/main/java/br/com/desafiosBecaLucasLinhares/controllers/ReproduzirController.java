@@ -1,7 +1,7 @@
-package br.com.desafiosBecaLucasLinhares.Controllers;
+package br.com.desafiosBecaLucasLinhares.controllers;
 
-import br.com.desafiosBecaLucasLinhares.Services.ReproduzirService;
-import br.com.desafiosBecaLucasLinhares.Models.Reproduzir;
+import br.com.desafiosBecaLucasLinhares.services.ReproduzirService;
+import br.com.desafiosBecaLucasLinhares.models.Reproduzir;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,21 +40,21 @@ public class ReproduzirController {
 
     }
 
+    @DeleteMapping("deletar/{id}")
+    public ResponseEntity<Reproduzir> deletar(@PathVariable Long id){
+
+        reproduzirService.deletar(id);
+
+        return ResponseEntity.noContent().build();
+
+    }
+
     @PatchMapping("atualizar/{id}")
     public ResponseEntity<Reproduzir> atualizarPorId(@PathVariable Long id, @RequestBody Reproduzir reproducao){
 
         Reproduzir reproducaoAtualizada = reproduzirService.atualizarPorId(id, reproducao);
 
         return ResponseEntity.ok().body(reproducaoAtualizada);
-    }
-
-    @DeleteMapping("deletar/{id}")
-    public ResponseEntity<Reproduzir> deletar(@PathVariable Long id){
-
-        Reproduzir reproducaoDeletada = reproduzirService.deletar(id);
-
-        return ResponseEntity.ok().body(reproducaoDeletada);
-
     }
 
 }
