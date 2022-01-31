@@ -1,7 +1,7 @@
-package br.com.desafiosBecaLucasLinhares.Controllers;
+package br.com.desafiosBecaLucasLinhares.controllers;
 
-import br.com.desafiosBecaLucasLinhares.Services.MusicaService;
-import br.com.desafiosBecaLucasLinhares.Models.Musica;
+import br.com.desafiosBecaLucasLinhares.models.Musica;
+import br.com.desafiosBecaLucasLinhares.services.MusicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("musica/")
+@RequestMapping("musica")
 public class MusicaController {
 
     @Autowired
@@ -18,17 +18,14 @@ public class MusicaController {
     @PostMapping("criar")
     public ResponseEntity<Musica> criar(@RequestBody Musica musica){
 
-        Musica novaMusica = musicaService.criar(musica);
-        return ResponseEntity.created(null).body(novaMusica);
-
+        return ResponseEntity.created(null).body(musicaService.criar(musica));
     }
 
     @GetMapping("obter/{id}")
-    public ResponseEntity<Musica> obterMusica(@PathVariable Long id){
+    public ResponseEntity<Musica> obterPorId(@PathVariable Long id){
 
-        Musica musicaObtidaPorId = musicaService.obterMusica(id);
-
-        return ResponseEntity.ok().body(musicaObtidaPorId);
+        Musica musicaObtida = musicaService.obterPorId(id);
+        return ResponseEntity.ok().body(musicaObtida);
 
     }
 
@@ -43,7 +40,7 @@ public class MusicaController {
     @PatchMapping("atualizar/{id}")
     public ResponseEntity<Musica> atualizarId(@PathVariable Long id, @RequestBody Musica musica){
 
-        Musica musicaAtualizada = musicaService.atualizarId(id, musica);
+        Musica musicaAtualizada = musicaService.atualizar(id, musica);
 
         return ResponseEntity.ok().body(musicaAtualizada);
 
@@ -52,9 +49,9 @@ public class MusicaController {
     @DeleteMapping("deletar/{id}")
     public ResponseEntity<Musica> deletar(@PathVariable Long id){
 
-        Musica musicaDeletada = musicaService.deletar(id);
+       musicaService.deletar(id);
 
-        return ResponseEntity.ok().body(musicaDeletada);
+        return ResponseEntity.noContent().build();
     }
 
 }

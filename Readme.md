@@ -107,6 +107,22 @@ ________________________________________________________________________________
 ##### PATCH (Atualizar passando id no url, e objeto no body em JSON):
 * api/reproduzir/atualizar/1
 
+DESAFIO 4:
+
+Configuração do Properties com banco de dados H2
+Adição da Dependencia do Bancho H2 no Pom.xml
+
+Criação dos Repositories 
+Adição da Dependecia do Spring Boot Starter Data JPA
+Adição da Dependencia do Lombook
+
+Refatoração da Classe Model:Musica utilizando Anotações do Spring JPA e do Lombook
+
+
+
+
+
+
 
 
 

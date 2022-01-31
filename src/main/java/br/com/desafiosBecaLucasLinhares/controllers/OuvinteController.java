@@ -1,7 +1,7 @@
-package br.com.desafiosBecaLucasLinhares.Controllers;
+package br.com.desafiosBecaLucasLinhares.controllers;
 
-import br.com.desafiosBecaLucasLinhares.Services.OuvinteService;
-import br.com.desafiosBecaLucasLinhares.Models.Ouvinte;
+import br.com.desafiosBecaLucasLinhares.services.OuvinteService;
+import br.com.desafiosBecaLucasLinhares.models.Ouvinte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,14 +22,6 @@ public class OuvinteController {
 
     }
 
-    @DeleteMapping("deletar/{id}")
-    public ResponseEntity<Ouvinte> deletarPorId(@PathVariable Long id){
-
-        Ouvinte ouvinteDeletado = ouvinteService.deletarPorId(id);
-
-        return ResponseEntity.ok().body(ouvinteDeletado);
-    }
-
     @GetMapping("obter/{id}")
     public ResponseEntity<Ouvinte> obterPorId(@PathVariable Long id){
 
@@ -42,6 +34,14 @@ public class OuvinteController {
     public ResponseEntity<List<Ouvinte>> obterLista(){
 
         return ResponseEntity.ok().body(ouvinteService.obterLista());
+    }
+
+    @DeleteMapping("deletar/{id}")
+    public ResponseEntity<Ouvinte> deletarPorId(@PathVariable Long id){
+
+        ouvinteService.deletarPorId(id);
+
+        return ResponseEntity.noContent().build();
     }
 
     @PatchMapping("atualizar/{id}")

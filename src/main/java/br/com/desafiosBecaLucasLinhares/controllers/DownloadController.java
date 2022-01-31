@@ -1,7 +1,7 @@
-package br.com.desafiosBecaLucasLinhares.Controllers;
+package br.com.desafiosBecaLucasLinhares.controllers;
 
-import br.com.desafiosBecaLucasLinhares.Services.DownloadService;
-import br.com.desafiosBecaLucasLinhares.Models.Download;
+import br.com.desafiosBecaLucasLinhares.services.DownloadService;
+import br.com.desafiosBecaLucasLinhares.models.Download;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,6 @@ public class DownloadController {
 
     @Autowired
     DownloadService downloadService;
-
 
     @PostMapping("iniciar")
     public ResponseEntity<Download> iniciarDownload(@RequestBody Download download){
@@ -41,22 +40,19 @@ public class DownloadController {
 
     }
 
-    @PatchMapping("atualizar/{id}")
-    public ResponseEntity<Download> atualizarDownload(@PathVariable Long id){
-
-        Download downloadAtualizado = downloadService.atualizarDownload(id);
-
-        return ResponseEntity.ok().body(downloadAtualizado);
-
-    }
-
     @DeleteMapping("delete/{id}")
     public ResponseEntity<Download> deletarDownload(@PathVariable Long id){
 
-        Download downloadDeletado = downloadService.deletarDownload(id);
-        return ResponseEntity.ok().body(downloadDeletado);
+        downloadService.deletarDownload(id);
 
+        return ResponseEntity.noContent().build();
     }
 
+    @PatchMapping("atualizar/{id}")
+    public ResponseEntity<Download> atualizarDownload(@PathVariable Long id, @RequestBody Download download){
+
+        return ResponseEntity.ok().body(downloadService.atualizarDownload(id, download));
+
+    }
 
 }
