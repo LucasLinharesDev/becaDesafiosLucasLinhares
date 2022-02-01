@@ -38,12 +38,18 @@ public class OuvinteService {
 
     public void deletarPorId( Long id){
 
-        ouvinteRepository.deleteById(id);
+        if(!ouvinteRepository.existsById(id))
+            new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+
     }
 
     public Ouvinte atualizarId( Long id, Ouvinte ouvinte){
-        ouvinte.setId(id);
-        return ouvinteRepository.save(ouvinte);
+
+        return ouvinteRepository.findById(id)
+                .map(
+                        obj -> ouvinteRepository.save(obj)
+                ).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
     }
 

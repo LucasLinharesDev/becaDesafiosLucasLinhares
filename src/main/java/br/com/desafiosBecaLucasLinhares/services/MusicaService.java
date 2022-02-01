@@ -37,11 +37,15 @@ public class MusicaService {
 
     public Musica atualizar(Long id, Musica musica){
 
-       return musicaRepository.save(musica);
-
+       return musicaRepository.findById(id)
+               .map(obj -> musicaRepository.save(obj))
+               .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public void deletar(Long id){
+
+        if (!musicaRepository.existsById(id))
+            new ResponseStatusException(HttpStatus.NOT_FOUND);
 
         musicaRepository.deleteById(id);
     }
