@@ -1,6 +1,7 @@
 package br.com.desafiosBecaLucasLinhares.models;
 
 
+import br.com.desafiosBecaLucasLinhares.dtos.requestDTO.MusicaRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,13 @@ public class Musica implements AcoesMusica{
     private String nome;
     private int volume;
     private String artistaNome;
+
+    public Musica(MusicaRequest musicaRequest) {
+
+        this.setNome(musicaRequest.getNome());
+        //this.setVolume(musicaDTO.getVolume());
+        this.setArtistaNome(musicaRequest.getArtistaNome());
+    }
 
     @Override
     public void mudarVolume(int volume) {
