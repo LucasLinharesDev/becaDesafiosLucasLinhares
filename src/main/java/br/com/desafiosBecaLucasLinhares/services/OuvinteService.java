@@ -1,11 +1,12 @@
 package br.com.desafiosBecaLucasLinhares.services;
 
+import br.com.desafiosBecaLucasLinhares.dtos.requestDTO.OuvinteRequest;
+import br.com.desafiosBecaLucasLinhares.dtos.responseDTO.OuvinteResponse;
 import br.com.desafiosBecaLucasLinhares.models.Ouvinte;
 import br.com.desafiosBecaLucasLinhares.repositories.OuvinteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -17,21 +18,32 @@ public class OuvinteService {
     @Autowired
     OuvinteRepository ouvinteRepository;
 
-    public Ouvinte criar( Ouvinte ouvinte){
+    public OuvinteResponse criar(OuvinteRequest ouvinteRequest){
 
-        return ouvinteRepository.save(ouvinte);
+        Ouvinte ouvinteCOnvertido = new Ouvinte(ouvinteRequest);
 
-    }
+        Ouvinte ouvinteRetornado = ouvinteRepository.save(ouvinteCOnvertido);
 
-    public Ouvinte obterPorId( Long id){
-
-        return ouvinteRepository.findById(id).get();
+        return new OuvinteResponse(ouvinteRetornado);
 
     }
 
-    public List<Ouvinte> obterLista(){
+    public OuvinteResponse obterPorId( Long id){
 
-        return ouvinteRepository.findAll();
+        return new OuvinteResponse(ouvinteRepository.findById(id).get());
+
+    }
+
+    public List<OuvinteResponse> obterLista(){
+
+        List<OuvinteResponse> lista = new ArrayList<>();
+
+        ouvinteRepository.findAll().stream().forEach(
+                ouvinte -> {
+                    lista.add(new OuvinteResponse(ouvinte));
+                }
+        );
+        return lista;
 
 
     }
@@ -39,18 +51,19 @@ public class OuvinteService {
     public void deletarPorId( Long id){
 
         if(!ouvinteRepository.existsById(id))
-            new ResponseStatusException(HttpStatus.NOT_FOUND);
+            ouvinteRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-
+        ouvinteRepository.deleteById(id);
     }
 
-    public Ouvinte atualizarId( Long id, Ouvinte ouvinte){
+    public OuvinteResponse atualizarId( Long id, OuvinteRequest ouvinte){
 
-        return ouvinteRepository.findById(id)
-                .map(
-                        obj -> ouvinteRepository.save(obj)
-                ).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Ouvinte ouvinteConvertido = new Ouvinte(ouvinte);
+        ouvinteConvertido.setId(id);
 
+        return new OuvinteResponse(ouvinteRepository.findById(id)
+                .map(objOuvinte -> ouvinteRepository.save(ouvinteConvertido))
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
 }

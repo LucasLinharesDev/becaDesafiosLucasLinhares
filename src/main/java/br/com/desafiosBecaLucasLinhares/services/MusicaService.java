@@ -47,6 +47,14 @@ public class MusicaService {
         return lista;
     }
 
+    public void deletar(Long id){
+
+        if(!musicaRepository.existsById(id))
+            musicaRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        musicaRepository.deleteById(id);
+    }
+
     public MusicaResponse atualizar(Long id, MusicaRequest musica){
 
         Musica musicaConvertida = new Musica(musica);
@@ -56,14 +64,6 @@ public class MusicaService {
                 .map(objMusica -> musicaRepository
                         .save(musicaConvertida))
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
-    }
-
-    public void deletar(Long id){
-
-        if(!musicaRepository.existsById(id))
-            musicaRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
-        musicaRepository.deleteById(id);
     }
 
 
