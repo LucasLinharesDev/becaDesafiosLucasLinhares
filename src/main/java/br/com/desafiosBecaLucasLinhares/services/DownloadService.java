@@ -3,7 +3,9 @@ package br.com.desafiosBecaLucasLinhares.services;
 import br.com.desafiosBecaLucasLinhares.models.Download;
 import br.com.desafiosBecaLucasLinhares.repositories.DownloadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +42,9 @@ public class DownloadService {
 
     public Download atualizarDownload(Long id, Download download){
 
-        download.setId(id);
+       return downloadRepository.findById(id)
+                .map(obj -> downloadRepository.save(obj))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        return downloadRepository.save(download);
     }
 }

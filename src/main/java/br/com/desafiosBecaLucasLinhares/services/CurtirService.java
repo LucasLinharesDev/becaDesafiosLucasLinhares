@@ -5,7 +5,9 @@ import br.com.desafiosBecaLucasLinhares.models.Musica;
 import br.com.desafiosBecaLucasLinhares.repositories.CurtirRepository;
 import br.com.desafiosBecaLucasLinhares.repositories.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,14 +37,19 @@ public class CurtirService {
 
     public void deletar(Long id){
 
-       curtirRepository.deleteById(id);
+        if (!curtirRepository.existsById(id))
+            new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+        curtirRepository.deleteById(id);
     }
 
     public Curtir atualizarPorId( Long id, Curtir curtida){
 
-        curtida.setIdPrincipal(id);
-
-        return curtirRepository.save(curtida);
+        return curtirRepository.findById(id)
+                .map(
+                        obj -> curtirRepository.save(obj)
+                )
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
     }
 

@@ -1,14 +1,17 @@
 package br.com.desafiosBecaLucasLinhares.services;
 
+import br.com.desafiosBecaLucasLinhares.dtos.requestDTO.MusicaRequest;
+import br.com.desafiosBecaLucasLinhares.dtos.responseDTO.MusicaResponse;
 import br.com.desafiosBecaLucasLinhares.models.Musica;
 import br.com.desafiosBecaLucasLinhares.repositories.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MusicaService {
@@ -16,34 +19,51 @@ public class MusicaService {
     @Autowired
     MusicaRepository musicaRepository;
 
-    public Musica criar(Musica musica){
+    public MusicaResponse criar(MusicaRequest musicaRequest){
 
-        if(musica.getVolume() == 0)
-            musica.mudarVolume(50);
+        Musica musicaConvertida = musicaRequest.converter(musicaRequest);
 
-       return musicaRepository.save(musica);
+        if(musicaConvertida.getVolume() == 0)
+            musicaConvertida.mudarVolume(50);
+
+        return new MusicaResponse(musicaRepository.save(musicaConvertida));
     }
 
-    public Musica obterPorId(Long id){
+    public MusicaResponse obterPorId(Long id){
 
-        return musicaRepository.findById(id).get();
-    }
-
-    public List<Musica> obterLista(){
-
-        return musicaRepository.findAll();
+        return new MusicaResponse(musicaRepository.findById(id).get());
 
     }
 
-    public Musica atualizar(Long id, Musica musica){
+    public List<MusicaResponse> obterLista(){
 
-       return musicaRepository.save(musica);
+        List<MusicaResponse> lista = new ArrayList<>();
 
+        musicaRepository.findAll().stream().forEach(
+                musica -> {
+                    lista.add(new MusicaResponse(musica));
+                }
+        );
+        return lista;
     }
 
     public void deletar(Long id){
 
+        if(!musicaRepository.existsById(id))
+            musicaRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
         musicaRepository.deleteById(id);
+    }
+
+    public MusicaResponse atualizar(Long id, MusicaRequest musica){
+
+        Musica musicaConvertida = new Musica(musica);
+        musicaConvertida.setId(id);
+
+       return new MusicaResponse(musicaRepository.findById(id)
+                .map(objMusica -> musicaRepository
+                        .save(musicaConvertida))
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
 

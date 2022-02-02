@@ -1,5 +1,7 @@
 package br.com.desafiosBecaLucasLinhares.controllers;
 
+import br.com.desafiosBecaLucasLinhares.dtos.requestDTO.OuvinteRequest;
+import br.com.desafiosBecaLucasLinhares.dtos.responseDTO.OuvinteResponse;
 import br.com.desafiosBecaLucasLinhares.services.OuvinteService;
 import br.com.desafiosBecaLucasLinhares.models.Ouvinte;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,23 +17,21 @@ public class OuvinteController {
     OuvinteService ouvinteService;
 
     @PostMapping("criar")
-    public ResponseEntity<Ouvinte> criar(@RequestBody Ouvinte ouvinte){
+    public ResponseEntity<OuvinteResponse> criar(@RequestBody OuvinteRequest ouvinteRequest){
 
-        Ouvinte ouvinteCriado = ouvinteService.criar(ouvinte);
-        return ResponseEntity.created(null).body(ouvinteCriado);
+        return ResponseEntity.created(null).body(ouvinteService.criar(ouvinteRequest));
 
     }
 
     @GetMapping("obter/{id}")
-    public ResponseEntity<Ouvinte> obterPorId(@PathVariable Long id){
+    public ResponseEntity<OuvinteResponse> obterPorId(@PathVariable Long id){
 
-        Ouvinte ouvinteObtidoPorId = ouvinteService.obterPorId(id);
+        return ResponseEntity.ok().body(ouvinteService.obterPorId(id));
 
-        return ResponseEntity.ok().body(ouvinteObtidoPorId);
     }
 
     @GetMapping("obter/lista")
-    public ResponseEntity<List<Ouvinte>> obterLista(){
+    public ResponseEntity<List<OuvinteResponse>> obterLista(){
 
         return ResponseEntity.ok().body(ouvinteService.obterLista());
     }
@@ -45,11 +45,11 @@ public class OuvinteController {
     }
 
     @PatchMapping("atualizar/{id}")
-    public ResponseEntity<Ouvinte> atualizarId(@PathVariable Long id, @RequestBody Ouvinte ouvinte){
+    public ResponseEntity<OuvinteResponse> atualizarId(@PathVariable Long id, @RequestBody OuvinteRequest ouvinteRequest){
 
-        Ouvinte ouvinteAtualizadoPorId = ouvinteService.atualizarId(id, ouvinte);
+        ouvinteService.atualizarId(id, ouvinteRequest);
 
-        return ResponseEntity.ok().body(ouvinteAtualizadoPorId);
+        return ResponseEntity.ok().build();
 
     }
 
