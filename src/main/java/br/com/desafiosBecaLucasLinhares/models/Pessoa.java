@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @NoArgsConstructor
@@ -19,8 +22,14 @@ public abstract class Pessoa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Campo nome não pode ser vazio.")
     private String nome;
-    private int idade;
+
+    @NotNull
+    @Min(18)
+    private Integer idade;
+
+    @NotBlank
     private String sexo;
 
 }

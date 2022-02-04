@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class OuvinteRequest{
 
     private String nome;
-    private int idade;
+    private Integer idade;
     private String sexo;
     private String login;
 

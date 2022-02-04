@@ -4,6 +4,7 @@ import br.com.desafiosBecaLucasLinhares.dtos.requestDTO.OuvinteRequest;
 import br.com.desafiosBecaLucasLinhares.dtos.responseDTO.OuvinteResponse;
 import br.com.desafiosBecaLucasLinhares.models.Ouvinte;
 import br.com.desafiosBecaLucasLinhares.repositories.OuvinteRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,21 +17,22 @@ import java.util.List;
 public class OuvinteService {
 
     @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
     OuvinteRepository ouvinteRepository;
 
     public OuvinteResponse criar(OuvinteRequest ouvinteRequest){
 
-        Ouvinte ouvinteCOnvertido = new Ouvinte(ouvinteRequest);
+        Ouvinte ouvinteRetornado = ouvinteRepository.save(modelMapper.map(ouvinteRequest, Ouvinte.class));
 
-        Ouvinte ouvinteRetornado = ouvinteRepository.save(ouvinteCOnvertido);
-
-        return new OuvinteResponse(ouvinteRetornado);
+        return modelMapper.map(ouvinteRetornado, OuvinteResponse.class);
 
     }
 
     public OuvinteResponse obterPorId( Long id){
 
-        return new OuvinteResponse(ouvinteRepository.findById(id).get());
+        return modelMapper.map(ouvinteRepository.findById(id).get(), OuvinteResponse.class);
 
     }
 
@@ -40,7 +42,7 @@ public class OuvinteService {
 
         ouvinteRepository.findAll().stream().forEach(
                 ouvinte -> {
-                    lista.add(new OuvinteResponse(ouvinte));
+                    lista.add(modelMapper.map(ouvinte, OuvinteResponse.class));
                 }
         );
         return lista;
@@ -58,12 +60,13 @@ public class OuvinteService {
 
     public OuvinteResponse atualizarId( Long id, OuvinteRequest ouvinte){
 
-        Ouvinte ouvinteConvertido = new Ouvinte(ouvinte);
+        Ouvinte ouvinteConvertido = modelMapper.map(ouvinte, Ouvinte.class);
         ouvinteConvertido.setId(id);
 
-        return new OuvinteResponse(ouvinteRepository.findById(id)
+        return modelMapper.map(ouvinteRepository.findById(id)
                 .map(objOuvinte -> ouvinteRepository.save(ouvinteConvertido))
-                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND)),OuvinteResponse.class);
+
     }
 
 }

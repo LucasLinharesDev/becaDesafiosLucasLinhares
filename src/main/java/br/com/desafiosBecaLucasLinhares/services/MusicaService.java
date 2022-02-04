@@ -4,6 +4,7 @@ import br.com.desafiosBecaLucasLinhares.dtos.requestDTO.MusicaRequest;
 import br.com.desafiosBecaLucasLinhares.dtos.responseDTO.MusicaResponse;
 import br.com.desafiosBecaLucasLinhares.models.Musica;
 import br.com.desafiosBecaLucasLinhares.repositories.MusicaRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,21 +18,24 @@ import java.util.Optional;
 public class MusicaService {
 
     @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
     MusicaRepository musicaRepository;
 
     public MusicaResponse criar(MusicaRequest musicaRequest){
 
-        Musica musicaConvertida = musicaRequest.converter(musicaRequest);
+        Musica musicaConvertida = modelMapper.map(musicaRequest,Musica.class);
 
         if(musicaConvertida.getVolume() == 0)
             musicaConvertida.mudarVolume(50);
 
-        return new MusicaResponse(musicaRepository.save(musicaConvertida));
+        return modelMapper.map(musicaRepository.save(musicaConvertida),MusicaResponse.class);
     }
 
     public MusicaResponse obterPorId(Long id){
 
-        return new MusicaResponse(musicaRepository.findById(id).get());
+        return modelMapper.map(musicaRepository.findById(id), MusicaResponse.class);
 
     }
 
@@ -41,7 +45,7 @@ public class MusicaService {
 
         musicaRepository.findAll().stream().forEach(
                 musica -> {
-                    lista.add(new MusicaResponse(musica));
+                    lista.add(modelMapper.map(musica, MusicaResponse.class));
                 }
         );
         return lista;
@@ -57,14 +61,14 @@ public class MusicaService {
 
     public MusicaResponse atualizar(Long id, MusicaRequest musica){
 
-        Musica musicaConvertida = new Musica(musica);
+        Musica musicaConvertida = modelMapper.map(musica, Musica.class);
         musicaConvertida.setId(id);
 
-       return new MusicaResponse(musicaRepository.findById(id)
+        return modelMapper.map(musicaRepository.findById(id)
                 .map(objMusica -> musicaRepository
                         .save(musicaConvertida))
-                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+                .orElseThrow()
+                , MusicaResponse.class)
+        ;
     }
-
-
 }

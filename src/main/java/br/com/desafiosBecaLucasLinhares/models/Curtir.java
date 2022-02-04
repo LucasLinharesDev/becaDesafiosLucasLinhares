@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -17,9 +18,11 @@ public class Curtir{
     private Long idPrincipal;
 
     @OneToOne
+    @NotNull(message = "Musica não pode ser nula.")
     public Musica musica;
 
     @OneToOne
+    @NotNull(message = "Ouvinte não pode ser nulo.")
     public Ouvinte ouvinte;
 
 }
