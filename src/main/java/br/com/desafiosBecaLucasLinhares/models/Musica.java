@@ -22,12 +22,12 @@ public class Musica implements AcoesMusica{
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Nome é obrigatório, não pode ser vazio.")
     private String nome;
 
     private int volume;
 
-    @NotBlank
+    @NotBlank( message = "Nome do Artista é obrigatório.")
     private String artistaNome;
 
     public Musica(MusicaRequest musicaRequest) {

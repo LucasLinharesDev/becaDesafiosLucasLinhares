@@ -35,10 +35,8 @@ public class ReproduzirService {
 
     public void deletar( Long id){
 
-        if(!reproduzirRepository.existsById(id))
-            new ResponseStatusException(HttpStatus.NOT_FOUND);
-
         reproduzirRepository.deleteById(id);
+
     }
 
     public Reproduzir atualizarPorId( Long id, Reproduzir reproducao){

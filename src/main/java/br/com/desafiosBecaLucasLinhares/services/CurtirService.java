@@ -24,7 +24,6 @@ public class CurtirService {
 
     }
 
-
     public Curtir obterPorId( Long id){
 
         return curtirRepository.findById(id).get();
@@ -37,10 +36,8 @@ public class CurtirService {
 
     public void deletar(Long id){
 
-        if (!curtirRepository.existsById(id))
-            new ResponseStatusException(HttpStatus.NOT_FOUND);
-
         curtirRepository.deleteById(id);
+
     }
 
     public Curtir atualizarPorId( Long id, Curtir curtida){
@@ -52,5 +49,4 @@ public class CurtirService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
     }
-
 }

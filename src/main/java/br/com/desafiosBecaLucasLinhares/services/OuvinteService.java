@@ -52,10 +52,8 @@ public class OuvinteService {
 
     public void deletarPorId( Long id){
 
-        if(!ouvinteRepository.existsById(id))
-            ouvinteRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+       ouvinteRepository.deleteById(id);
 
-        ouvinteRepository.deleteById(id);
     }
 
     public OuvinteResponse atualizarId( Long id, OuvinteRequest ouvinte){
