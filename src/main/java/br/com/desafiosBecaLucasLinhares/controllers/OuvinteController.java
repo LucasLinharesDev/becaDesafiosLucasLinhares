@@ -2,11 +2,13 @@ package br.com.desafiosBecaLucasLinhares.controllers;
 
 import br.com.desafiosBecaLucasLinhares.dtos.requestDTO.OuvinteRequest;
 import br.com.desafiosBecaLucasLinhares.dtos.responseDTO.OuvinteResponse;
-import br.com.desafiosBecaLucasLinhares.services.OuvinteService;
 import br.com.desafiosBecaLucasLinhares.models.Ouvinte;
+import br.com.desafiosBecaLucasLinhares.services.OuvinteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +19,7 @@ public class OuvinteController {
     OuvinteService ouvinteService;
 
     @PostMapping("criar")
-    public ResponseEntity<OuvinteResponse> criar(@RequestBody OuvinteRequest ouvinteRequest){
+    public ResponseEntity<OuvinteResponse> criar(@RequestBody @Valid OuvinteRequest ouvinteRequest){
 
         return ResponseEntity.created(null).body(ouvinteService.criar(ouvinteRequest));
 

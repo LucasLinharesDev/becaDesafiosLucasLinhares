@@ -4,11 +4,11 @@
 
 * Desenvolvedor: Lucas Linhares
 * IDE Utilizada: IntelliJ
-* Nome do Projeto: LucPlayer
+* Nome do Projeto: API de Música
 
-##### O que o Lucplayer faz?
+##### O que a API faz?
 
-* No LucPlayer podemos criar ouvintes e musicas, e interagir de várias maneiras com as reproduções criadas: download, curtir, reproduzir.
+* Podemos criar ouvintes e musicas, e interagir das seguintes maneiras: download, curtir, reproduzir.
 
 ##### Modelagem Conceitual:
 
@@ -105,38 +105,11 @@ ________________________________________________________________________________
 * api/reproduzir/deletar/3
 
 ##### PATCH (Atualizar passando id no url, e objeto no body em JSON):
-* api/reproduzir/atualizar/1
-
-DESAFIO 4:
-
-Configuração do Properties com banco de dados H2
-Adição da Dependencia do Bancho H2 no Pom.xml
-
-Criação dos Repositories 
-Adição da Dependecia do Spring Boot Starter Data JPA
-Adição da Dependencia do Lombook
-
-Refatoração da Classe Model:Musica utilizando Anotações do Spring JPA e do Lombook
+*api/reproduzir/reproduzir/atualizar/5
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### Lista com todos os Endpoints do Postman:
+[Coleção com todos Endpoints, Postman em JSON](endpoints.json)
 
 
 

@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
@@ -21,8 +22,12 @@ public class Musica implements AcoesMusica{
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @NotBlank
     private String nome;
+
     private int volume;
+
+    @NotBlank
     private String artistaNome;
 
     public Musica(MusicaRequest musicaRequest) {

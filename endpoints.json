@@ -1,0 +1,621 @@
+{
+	"info": {
+		"_postman_id": "c7f1ad10-eafb-471a-95ba-279a15657d65",
+		"name": "API BECA JAVA DESAFIOS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Musica - Criar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"nome\": \"musica1\",\r\n\"artistaNome\": \"artista1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/musica/criar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"musica",
+						"criar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Musica - Obter por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/musica/obter/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"musica",
+						"obter",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Musica - obter lista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/musica/obter/lista",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"musica",
+						"obter",
+						"lista"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Musica - deletar por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"nome\": \"musica2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/musica/deletar/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"musica",
+						"deletar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Musica - Atualizar",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"nome\": \"musica2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/musica/atualizar/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"musica",
+						"atualizar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ouvinte - Criar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Lucas Linhares\",\r\n    \"idade\": 25,\r\n    \"sexo\": \"Masculino\",\r\n    \"login\":\"04528968193\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ouvinte/criar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ouvinte",
+						"criar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ouvinte - Obter por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ouvinte/obter/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ouvinte",
+						"obter",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ouvinte - obter lista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ouvinte/obter/lista",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ouvinte",
+						"obter",
+						"lista"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ouvinte - Deletar por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ouvinte/deletar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ouvinte",
+						"deletar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ouvinte - atualizar",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idade\": 27,\r\n    \"nome\": \"Lucas Linhares\",\r\n    \"sexo\": \"masculino\",\r\n    \"login\": \"lucasbsb12\",\r\n    \"totalMusicasReproduzidas\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ouvinte/atualizar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ouvinte",
+						"atualizar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curtir - adicionar curtida",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"musica\": \r\n        {\r\n            \"id\": 1\r\n        }\r\n    ,\r\n    \"ouvinte\": \r\n        {\r\n            \"id\": 2\r\n        }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/curtidas/adicionar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"curtidas",
+						"adicionar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curtir - obter curtidas por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/curtidas/obter/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"curtidas",
+						"obter",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curtir - obter lista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/curtidas/obter/lista",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"curtidas",
+						"obter",
+						"lista"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curtir - deletar por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idPrincipal\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/curtidas/deletar/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"curtidas",
+						"deletar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Curtir - atualizar por id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/curtidas/atualizar/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"curtidas",
+						"atualizar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download - iniciar download",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"musica\":\r\n    {\r\n        \"id\":1\r\n    },\r\n    \"ouvinte\":\r\n    {\r\n        \"id\":2\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/download/iniciar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"download",
+						"iniciar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download - obter por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/download/obter/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"download",
+						"obter",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download- obter lista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/download/obter/lista",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"download",
+						"obter",
+						"lista"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download - atualizar por id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"musica\": {\r\n            \"id\": 10,\r\n            \"nome\": \"musica1\",\r\n            \"volume\": 50,\r\n            \"artistaNome\": \"artista1\"\r\n        },\r\n        \"ouvinte\": {\r\n            \"id\": 2,\r\n            \"nome\": null,\r\n            \"idade\": 0,\r\n            \"sexo\": null,\r\n            \"login\": \"lucasbsb12\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/download/atualizar/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"download",
+						"atualizar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download - delete por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/download/delete/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"download",
+						"delete",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reproduzir - iniciar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"musica\":{\r\n        \"id\":1\r\n    },\r\n    \"ouvinte\":\r\n    {\r\n        \"id\":2\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/reproduzir/iniciar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reproduzir",
+						"iniciar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reproduzir - obter por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/reproduzir/obter/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reproduzir",
+						"obter",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reproduzir - obter lista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/reproduzir/obter/lista",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reproduzir",
+						"obter",
+						"lista"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reproduzir - deletar por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/reproduzir/deletar/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reproduzir",
+						"deletar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reproduzir - atualizar por id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ouvinte\":\r\n    {\r\n        \"id\":2\r\n    },\r\n    \"musica\":{\r\n        \"id\":3\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/reproduzir/atualizar/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reproduzir",
+						"atualizar",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
