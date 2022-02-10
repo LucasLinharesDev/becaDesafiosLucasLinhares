@@ -12,26 +12,26 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("musica")
+@RequestMapping("/musica")
 public class MusicaController {
 
     @Autowired
     private MusicaService musicaService;
 
-    @PostMapping("criar")
+    @PostMapping("/criar")
     public ResponseEntity<MusicaResponse> criar(@RequestBody @Valid MusicaRequest musicaRequest){
 
         return ResponseEntity.created(null).body(musicaService.criar(musicaRequest));
     }
 
-    @GetMapping("obter/{id}")
+    @GetMapping("/obter/{id}")
     public ResponseEntity<MusicaResponse> obterPorId(@PathVariable Long id){
 
         return ResponseEntity.ok().body(musicaService.obterPorId(id));
 
     }
 
-    @GetMapping("obter/lista")
+    @GetMapping("/obter/lista")
     public ResponseEntity<List<MusicaResponse>> obterLista(){
 
         List<MusicaResponse> listadeMusicas = musicaService.obterLista();
@@ -39,14 +39,14 @@ public class MusicaController {
         return ResponseEntity.ok().body(listadeMusicas);
     }
 
-    @PatchMapping("atualizar/{id}")
+    @PatchMapping("/atualizar/{id}")
     public ResponseEntity<MusicaResponse> atualizar(@PathVariable Long id, @RequestBody MusicaRequest musica){
 
         return ResponseEntity.ok().body(musicaService.atualizar(id, musica));
 
     }
 
-    @DeleteMapping("deletar/{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<Musica> deletar(@PathVariable Long id){
 
        musicaService.deletar(id);

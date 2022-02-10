@@ -1,6 +1,5 @@
 package br.com.desafiosBecaLucasLinhares.dtos.requestDTO;
 
-import br.com.desafiosBecaLucasLinhares.models.Musica;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,10 +13,27 @@ public class MusicaRequest {
     private int volume;
     private String artistaNome;
 
-    public Musica converter(MusicaRequest musicaRequest) {
-
-        return new Musica(musicaRequest);
-
+    public String getNome() {
+        return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public String getArtistaNome() {
+        return artistaNome;
+    }
+
+    public void setArtistaNome(String artistaNome) {
+        this.artistaNome = artistaNome;
+    }
 }

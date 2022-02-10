@@ -1,8 +1,10 @@
-version: "3.9"  # optional since v1.27.0
+version: '3.9'
 services:
-  ibeautydb:
+  db:
     image: mysql
     ports:
-      - "3307:3307"
+      - '3306:3306'
     environment:
+      - MYSQL_DATABASE=spring_boot_mysql
       - MYSQL_ROOT_PASSWORD=12345678
+    restart: always

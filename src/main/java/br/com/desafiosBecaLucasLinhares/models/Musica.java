@@ -1,7 +1,6 @@
 package br.com.desafiosBecaLucasLinhares.models;
 
 
-import br.com.desafiosBecaLucasLinhares.dtos.requestDTO.MusicaRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,16 +29,40 @@ public class Musica implements AcoesMusica{
     @NotBlank( message = "Nome do Artista é obrigatório.")
     private String artistaNome;
 
-    public Musica(MusicaRequest musicaRequest) {
-
-        this.setNome(musicaRequest.getNome());
-        //this.setVolume(musicaDTO.getVolume());
-        this.setArtistaNome(musicaRequest.getArtistaNome());
-    }
-
     @Override
     public void mudarVolume(int volume) {
     setVolume(volume);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    public String getArtistaNome() {
+        return artistaNome;
+    }
+
+    public void setArtistaNome(String artistaNome) {
+        this.artistaNome = artistaNome;
+    }
 }

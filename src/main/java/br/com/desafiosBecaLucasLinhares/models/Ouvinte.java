@@ -27,15 +27,22 @@ public class Ouvinte extends Pessoa{
     @CPF
     private String login;
 
-    public Ouvinte(OuvinteRequest ouvinteRequest){
 
-        this.setNome(ouvinteRequest.getNome());
-        this.setIdade(ouvinteRequest.getIdade());
-        this.setSexo(ouvinteRequest.getSexo());
-        this.setLogin(ouvinteRequest.getLogin());
-
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
 }
 
 
