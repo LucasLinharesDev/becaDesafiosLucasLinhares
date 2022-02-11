@@ -2,14 +2,11 @@ package br.com.desafiosBecaLucasLinhares.services;
 
 import br.com.desafiosBecaLucasLinhares.dtos.requestDTO.MusicaRequest;
 import br.com.desafiosBecaLucasLinhares.dtos.responseDTO.MusicaResponse;
-import br.com.desafiosBecaLucasLinhares.exceptions.JsonInvalidoException;
 import br.com.desafiosBecaLucasLinhares.models.Musica;
 import br.com.desafiosBecaLucasLinhares.repositories.MusicaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +23,8 @@ public class MusicaService {
     public MusicaResponse criar(MusicaRequest musicaRequest){
 
         Musica musicaConvertida = modelMapper.map(musicaRequest,Musica.class);
-        if(musicaRequest.getArtistaNome() == null | musicaRequest.getNome() == null)
-            throw new JsonInvalidoException("os campos 'nome' e 'artistaNome' são obrigatórios");
+//        if(musicaRequest.getArtistaNome() == null | musicaRequest.getNome() == null)
+//            throw new JsonInvalidoException("os campos 'nome' e 'artistaNome' são obrigatórios");
 
         if(musicaConvertida.getVolume() == 0)
             musicaConvertida.mudarVolume(50);
