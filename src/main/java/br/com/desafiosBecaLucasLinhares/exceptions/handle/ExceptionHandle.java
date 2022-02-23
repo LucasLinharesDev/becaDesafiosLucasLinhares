@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.transaction.TransactionSystemException;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.server.ResponseStatusException;
@@ -107,5 +109,20 @@ public class ExceptionHandle {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(defaultException1);
 
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<DefaultException> handle(MethodArgumentNotValidException e){
+
+        DefaultException defaultException1 = new DefaultException();
+
+        defaultException1.setMenssagem(e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+        defaultException1.setDataHora(LocalDateTime.now());
+        defaultException1.setStatus(HttpStatus.BAD_REQUEST.value());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(defaultException1);
+
+    }
+
+
 
 }

@@ -16,7 +16,7 @@
 
 	<artifactId>becaDesafiosLucasLinhares</artifactId>
 
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 
 	<name>becaDesafiosLucasLinhares</name>
 
@@ -64,17 +64,19 @@
 		</dependency>
 
 
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>2.1.210</version>
-		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 			<version>2.6.3</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
 		<dependency>
@@ -88,11 +90,14 @@
 			<version>3.0.0</version>
 		</dependency>
 
+
 	</dependencies>
 
 	<build>
 
 		<plugins>
+
+
 
 			<plugin>
 
