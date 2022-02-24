@@ -62,11 +62,6 @@
 
 		</dependency>
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> desafio08
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -92,7 +87,6 @@
 			<version>3.0.0</version>
 		</dependency>
 
-<<<<<<< HEAD
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -101,12 +95,15 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.28</version>
 		</dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 
 
-=======
->>>>>>> desafio08
-
-	</dependencies>
+    </dependencies>
 
 	<build>
 
